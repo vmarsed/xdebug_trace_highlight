@@ -1,0 +1,71 @@
+{
+    "scopeName": "source.xt",
+    "foldingStartMarker" : "${function(){return '->'}}",
+    "foldingStopMarker": "${function(){return '->'}}",
+    "patterns": [{ "include": "#expression" }],
+    "repository": {
+        "expression": {
+            "patterns": [
+                { "include": "#letter" }, 
+                { "include": "#classee" }, 
+                { "include": "#function" }, 
+                { "include": "#variable" }, 
+                { "include": "#string" }, 
+                { "include": "#paren-expression" },
+                {
+                    "文件引用路径":"",
+                    "match": "/?([a-zA-Z-.#!]+/)+[a-zA-Z-.#!]+\\.[a-z]+(:\\d+)",
+                    "橙色的 mokai 同 parameter": "variable.language",
+                    "name": "storage.type"
+                },
+                {
+                    "返回值":"",
+                    "match":"^\\s*(>=>.*)|^\\s*(=>.*)",
+                    "captures":{
+                        "1":{"name":"comment.line.return"},
+                        "2":{"name":"comment.line.expression"}
+                    }
+                }
+            ]
+        },
+        "letter": {
+            "match": "^\\s*->",
+            "name": "keyword.letter"
+        },
+        "classee":{
+            "match": "\\\\([a-zA-Z_]+)-",
+            "captures":{
+                "1":{"name":"entity.name.class"}
+            }
+        },
+        "function":{
+            "match": "([a-zA-Z_]+)\\(",
+            "captures":{
+                "1":{"name":"keyword.letter"}
+            }
+        },
+        "variable":{
+            "match":"\\(.*(\\$[a-zA-Z_]+).*\\)",
+            "captures":{
+                "1":{"name":"entity.name.function"}
+            }            
+        },
+        "string":{
+            "begin": "'",
+            "end": "'(?!')",
+            "name":"string.quoted.single"
+        },
+        "paren-expression": {
+            "begin": "\\(",
+            "end": "\\)",
+            "beginCaptures": {
+                "0": { "name": "punctuation.paren.open" }
+            },
+            "endCaptures": {
+                "0": { "name": "punctuation.paren.close" }
+            },
+            "name": "expression.group",
+            "patterns": [{ "include": "#expression" }]
+        }
+    }
+}
