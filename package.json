@@ -4,6 +4,7 @@
   "displayName": "xtDisplay",
   "description": "",
   "version": "0.0.2",
+  "repository": "https://github.com/vmarsed/xdebug_trace_highlight",
   "engines": {
     "vscode": "^1.71.0"
   },
