@@ -1,1 +1,1 @@
-xdebug trace file syntaxe
+xdebug trace file syntaxe highlight
